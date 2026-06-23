@@ -1,7 +1,7 @@
 {
-  "name": "FM Kadro Planlayıcı",
+  "name": "FM Squad Planner",
   "short_name": "FM Planner",
-  "description": "Football Manager için kadro, taktik ve transfer planlama uygulaması.",
+  "description": "Squad, tactics and transfer planning tool for Football Manager players.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#07111f",
