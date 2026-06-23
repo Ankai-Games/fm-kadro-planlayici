@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="theme-color" content="#07111f" />
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<title>FM Kadro Planlayıcı</title>
+<style>
+:root{
+  --bg:#07111f;--panel:#101827;--panel2:#162238;--line:#2b3b58;
+  --text:#f8fafc;--muted:#94a3b8;--blue:#3b82f6;--green:#22c55e;
+  --red:#ef4444;--yellow:#eab308;--purple:#a855f7;--orange:#f97316;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;overflow-x:hidden}
+body{
+  font-family:Arial,sans-serif;color:var(--text);
+  background:radial-gradient(circle at top,#172554 0,#07111f 48%,#030712 100%);
+}
+header{
+  padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:rgba(3,7,18,.88);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20
+}
+h1{font-size:22px;margin:0}.status{background:#0f172a;border:1px solid var(--line);padding:9px 12px;border-radius:999px;color:var(--muted);font-size:14px;white-space:nowrap}.status strong{color:white}
+.layout{
+  width:100%;max-width:1500px;margin:0 auto;padding:14px;
+  display:grid;grid-template-columns:320px minmax(0,1fr);gap:14px;
+}
+.panel{
+  background:linear-gradient(180deg,rgba(30,41,59,.96),rgba(15,23,42,.96));
+  border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 16px 45px rgba(0,0,0,.22)
+}
+.panel + .panel{margin-top:14px}
+h2{font-size:18px;margin:0 0 10px}
+label{font-size:12px;color:var(--muted);display:block;margin-top:8px}
+input,select,textarea,button{
+  width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line);
+  background:#0f172a;color:white;outline:none;margin-top:6px
+}
+textarea{min-height:80px;resize:vertical}
+button{background:linear-gradient(135deg,#2563eb,#7c3aed);border:0;font-weight:800;cursor:pointer}
+button:hover{filter:brightness(1.08)}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn-danger{background:linear-gradient(135deg,#dc2626,#7f1d1d)}
+.btn-green{background:linear-gradient(135deg,#16a34a,#065f46)}
+.btn-ghost{background:#111827;border:1px solid var(--line)}
+.btn-orange{background:linear-gradient(135deg,#f97316,#9a3412)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.tab-btn{background:#111827;border:1px solid var(--line);font-size:13px;padding:10px 6px}
+.tab-btn.active{background:linear-gradient(135deg,#2563eb,#7c3aed)}
+.tab{display:none}.tab.active{display:block}
+.hint{color:var(--muted);font-size:13px;line-height:1.45;margin:10px 0 0}
+.players,.targets,.incoming{min-height:90px}
+.item,.player{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;
+  background:#17233a;border:1px solid #334155;padding:10px;margin:8px 0;border-radius:14px;
+  cursor:pointer;user-select:none;transition:.15s;max-width:100%
+}
+.item:hover,.player:hover{transform:translateY(-1px);border-color:#60a5fa}
+.player.selected{border-color:#93c5fd;box-shadow:0 0 0 3px rgba(59,130,246,.28);background:#1e3a8a}
+.name{font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{color:#cbd5e1;font-size:12px;margin-top:4px;line-height:1.35;overflow-wrap:anywhere}
+.badge{display:inline-block;font-size:11px;border-radius:999px;padding:3px 7px;margin-top:5px;background:rgba(59,130,246,.18);border:1px solid rgba(96,165,250,.35);color:#bfdbfe}
+.actions{display:flex;gap:5px}.icon-btn{width:30px;height:30px;padding:0;margin:0;border-radius:10px;background:#0f172a;border:1px solid #475569;font-size:14px}
+.main{min-width:0}
+.toolbar{
+  display:grid;grid-template-columns:1fr 150px 150px;gap:10px;align-items:end;margin-bottom:12px
+}
+.toolbar .mini-stat{background:#0f172a;border:1px solid var(--line);border-radius:14px;padding:10px;color:var(--muted);font-size:13px}
+.toolbar .mini-stat strong{display:block;color:white;font-size:20px}
+.pitch-card{overflow:hidden}
+.pitch-wrap{
+  width:100%;overflow:hidden;border-radius:22px;border:1px solid var(--line);background:#081225
+}
+.pitch{
+  width:100%;
+  height:clamp(360px,58vw,600px);
+  max-height:calc(100vh - 170px);
+  min-height:340px;
+  position:relative;overflow:hidden;border-radius:22px;border:3px solid rgba(255,255,255,.86);
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.055) 50%,rgba(0,0,0,.04) 50%),
+    linear-gradient(#188344,#166534);
+  background-size:14.28% 100%,100% 100%;
+}
+.pitch:before{content:"";position:absolute;left:50%;top:0;height:100%;border-left:2px solid rgba(255,255,255,.55)}
+.pitch:after{content:"";position:absolute;left:50%;top:50%;width:min(110px,16vw);height:min(110px,16vw);border:2px solid rgba(255,255,255,.55);border-radius:50%;transform:translate(-50%,-50%)}
+.box-mark{position:absolute;left:50%;transform:translateX(-50%);border:2px solid rgba(255,255,255,.45);width:34%;height:15%;z-index:1}.box-top{top:-2px;border-top:0}.box-bottom{bottom:-2px;border-bottom:0}
+.slot{
+  position:absolute;z-index:2;
+  width:clamp(74px,9.5vw,118px);
+  min-height:clamp(48px,5.2vw,62px);
+  padding:6px;border-radius:14px;background:rgba(2,6,23,.62);
+  border:1px dashed rgba(255,255,255,.86);text-align:center;cursor:pointer;
+  transform:translate(-50%,-50%);transition:.12s
+}
+.slot:hover{background:rgba(30,64,175,.72)}
+.slot-title{font-size:12px;font-weight:900}.empty-text{font-size:11px;color:#dbeafe;margin-top:4px}
+.slot .player{display:block;text-align:center;padding:5px;margin:4px 0 0;border-radius:10px;font-size:11px;background:#0f172a}
+.slot .actions,.slot .badge{display:none}.slot .meta{font-size:10px}
+.board{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px
+}
+.col{min-height:220px;padding:10px;border-radius:16px;border:1px solid var(--line);background:rgba(15,23,42,.82);cursor:pointer;min-width:0}
+.col h3{margin:0 0 8px;font-size:15px;display:flex;justify-content:space-between;gap:5px}.count{color:var(--muted);font-size:12px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px}.green{background:var(--green)}.blue{background:var(--blue)}.yellow{background:var(--yellow)}.red{background:var(--red)}.purple{background:var(--purple)}
+.drop-hover{outline:3px solid #93c5fd}.toast{position:fixed;right:18px;bottom:18px;background:#0f172a;border:1px solid #334155;border-radius:14px;padding:12px 14px;color:#e2e8f0;display:none;z-index:30}
+@media(max-width:1000px){
+  .layout{grid-template-columns:1fr}
+  .toolbar{grid-template-columns:1fr 1fr}
+  .toolbar .formation-control{grid-column:1/-1}
+  .board{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:640px){
+  header{display:block}.status{margin-top:8px;display:inline-block}
+  .layout{padding:8px}
+  .tabs{grid-template-columns:repeat(2,1fr)}
+  .toolbar{grid-template-columns:1fr}
+  .pitch{height:520px;max-height:none}
+  .slot{width:78px;min-height:48px}
+  .board{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>⚽ FM Kadro Planlayıcı</h1>
+  <div id="selectedStatus" class="status">Seçili oyuncu: <strong>Yok</strong></div>
+</header>
+
+<div class="layout">
+  <aside>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="playersTab">Oyuncu</button>
+      <button class="tab-btn" data-tab="targetTab">Hedef</button>
+      <button class="tab-btn" data-tab="incomingTab">Gelecek</button>
+      <button class="tab-btn" data-tab="dataTab">Veri</button>
+    </div>
+
+    <section id="playersTab" class="tab active">
+      <div class="panel">
+        <h2>Oyuncu Ekle / Düzenle</h2>
+        <label>Oyuncu adı</label><input id="playerName" placeholder="Örn: Ferdi Kadıoğlu">
+        <label>Mevki</label>
+        <select id="playerPosition">
+          <option>GK</option><option>LB</option><option>CB</option><option>RB</option><option>DM</option><option>CM</option><option>AMC</option><option>LW</option><option>RW</option><option>ST</option>
+        </select>
+        <label>Rol / Not</label><input id="playerRole" placeholder="Örn: Kanat Bek - Destek">
+        <label>Etiket</label>
+        <select id="playerTag">
+          <option>Belirsiz</option><option>Vazgeçilmez</option><option>Geliştir</option><option>Maaş yükü</option><option>Fırsat satışı</option><option>Yerine adam bul</option>
+        </select>
+        <button id="addPlayerBtn">Oyuncu Ekle</button>
+        <div class="btn-row">
+          <button id="updatePlayerBtn" class="btn-green">Güncelle</button>
+          <button id="deletePlayerBtn" class="btn-danger">Sil</button>
+        </div>
+        <div class="btn-row">
+          <button id="clearSelectionBtn" class="btn-ghost">Seçimi Temizle</button>
+          <button id="resetBtn" class="btn-danger">Sıfırla</button>
+        </div>
+        <p class="hint">Oyuncuya dokun, sonra sahadaki kutuya veya transfer kolonuna dokun.</p>
+      </div>
+      <div class="panel">
+        <h2>Oyuncu Havuzu <span id="poolCount" class="count">0</span></h2>
+        <div id="players" class="players dropzone"></div>
+      </div>
+    </section>
+
+    <section id="targetTab" class="tab">
+      <div class="panel">
+        <h2>Transfer Hedefi</h2>
+        <label>Oyuncu / profil</label><input id="targetName" placeholder="Örn: Genç sağ bek">
+        <label>Mevki</label><input id="targetPos" placeholder="RB">
+        <label>Bütçe / not</label><input id="targetNote" placeholder="8M€, yüksek öncelik">
+        <button id="addTargetBtn" class="btn-orange">Hedef Ekle</button>
+      </div>
+      <div class="panel">
+        <h2>Transfer Hedefleri <span id="targetCount" class="count">0</span></h2>
+        <div id="targets" class="targets"></div>
+      </div>
+    </section>
+
+    <section id="incomingTab" class="tab">
+      <div class="panel">
+        <h2>Gelecek Oyuncu</h2>
+        <label>Oyuncu adı</label><input id="incomingName" placeholder="Örn: Yeni stoper">
+        <label>Mevki</label><input id="incomingPos" placeholder="CB">
+        <label>Durum / not</label><input id="incomingNote" placeholder="Anlaşıldı, sezon sonu gelecek">
+        <button id="addIncomingBtn" class="btn-green">Gelecek Ekle</button>
+      </div>
+      <div class="panel">
+        <h2>Gelecekler <span id="incomingCount" class="count">0</span></h2>
+        <div id="incoming" class="incoming"></div>
+      </div>
+    </section>
+
+    <section id="dataTab" class="tab">
+      <div class="panel">
+        <h2>Senaryo / Veri</h2>
+        <label>Senaryo adı</label><input id="scenarioName" placeholder="Örn: Gençleşme planı">
+        <button id="saveScenarioBtn" class="btn-green">Senaryo Kaydet</button>
+        <label>Kayıtlı senaryolar</label><select id="scenarioSelect"></select>
+        <div class="btn-row">
+          <button id="loadScenarioBtn">Yükle</button>
+          <button id="deleteScenarioBtn" class="btn-danger">Sil</button>
+        </div>
+        <button id="exportBtn" class="btn-ghost">JSON Dışa Aktar</button>
+        <label>JSON içe aktar</label><textarea id="importText"></textarea>
+        <button id="importBtn">İçe Aktar</button>
+      </div>
+    </section>
+  </aside>
+
+  <main class="main">
+    <section class="panel pitch-card">
+      <div class="toolbar">
+        <div class="formation-control">
+          <label>Diziliş</label>
+          <select id="formationSelect">
+            <option value="4231">4-2-3-1</option><option value="433">4-3-3</option><option value="442">4-4-2</option><option value="343">3-4-3</option><option value="352">3-5-2</option>
+          </select>
+        </div>
+        <div class="mini-stat"><strong id="totalPlayers">0</strong>Toplam oyuncu</div>
+        <div class="mini-stat"><strong id="onPitch">0</strong>Sahada</div>
+      </div>
+      <div class="pitch-wrap">
+        <div id="pitch" class="pitch"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Transfer Karar Panosu</h2>
+      <div class="board">
+        <div class="col dropzone decision" data-box="Kalacak"><h3><span><i class="dot green"></i>Kalacak</span><span class="count">0</span></h3></div>
+        <div class="col dropzone decision" data-box="Rotasyon"><h3><span><i class="dot blue"></i>Rotasyon</span><span class="count">0</span></h3></div>
+        <div class="col dropzone decision" data-box="Kiralık"><h3><span><i class="dot yellow"></i>Kiralık</span><span class="count">0</span></h3></div>
+        <div class="col dropzone decision" data-box="Satılabilir"><h3><span><i class="dot purple"></i>Satılabilir</span><span class="count">0</span></h3></div>
+        <div class="col dropzone decision" data-box="Gidecek"><h3><span><i class="dot red"></i>Gidecek</span><span class="count">0</span></h3></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
+}
+
+const STORAGE_KEY="fm-kadro-planlayici-pwa", SCENARIO_KEY="fm-kadro-senaryolar-pwa";
+const $=id=>document.getElementById(id);
+const playersList=$("players"), pitch=$("pitch"), selectedStatus=$("selectedStatus");
+let selectedPlayer=null, draggedPlayer=null;
+
+const formations={
+ "4231":[["ST",50,10],["LW",26,29],["AMC",50,29],["RW",74,29],["DM",40,52],["DM",60,52],["LB",18,75],["CB",40,75],["CB",60,75],["RB",82,75],["GK",50,92]],
+ "433":[["ST",50,10],["LW",27,28],["RW",73,28],["CM",36,52],["CM",50,55],["CM",64,52],["LB",18,75],["CB",40,75],["CB",60,75],["RB",82,75],["GK",50,92]],
+ "442":[["ST",42,12],["ST",58,12],["LM",26,42],["CM",42,53],["CM",58,53],["RM",74,42],["LB",18,75],["CB",40,75],["CB",60,75],["RB",82,75],["GK",50,92]],
+ "343":[["ST",50,10],["LW",27,29],["RW",73,29],["LM",25,55],["CM",42,55],["CM",58,55],["RM",75,55],["CB",34,77],["CB",50,79],["CB",66,77],["GK",50,92]],
+ "352":[["ST",42,12],["ST",58,12],["LM",23,48],["CM",38,52],["CM",50,55],["CM",62,52],["RM",77,48],["CB",34,77],["CB",50,79],["CB",66,77],["GK",50,92]]
+};
+
+function escapeHtml(t){return String(t||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function toast(msg){const t=$("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",1500)}
+function getAllPlayers(){return [...document.querySelectorAll(".player")]}
+function playerData(c){return {id:c.id,name:c.dataset.name,pos:c.dataset.pos,role:c.dataset.role,tag:c.dataset.tag}}
+function setPlayerData(c,d){
+ c.dataset.name=d.name;c.dataset.pos=d.pos;c.dataset.role=d.role||"";c.dataset.tag=d.tag||"Belirsiz";
+ c.innerHTML=`<div><div class="name">${escapeHtml(d.name)}</div><div class="meta">${escapeHtml(d.pos)}${d.role?" • "+escapeHtml(d.role):""}</div><span class="badge">${escapeHtml(d.tag||"Belirsiz")}</span></div><div class="actions"><button class="icon-btn edit">✏️</button><button class="icon-btn remove">🗑️</button></div>`;
+ c.querySelector(".edit").onclick=e=>{e.stopPropagation();selectPlayer(c);fillForm(c)};
+ c.querySelector(".remove").onclick=e=>{e.stopPropagation();deleteCard(c)};
+}
+function makePlayerCard(d){
+ const c=document.createElement("div");c.className="player";c.draggable=true;c.id=d.id||("player-"+Date.now()+"-"+Math.floor(Math.random()*9999));setPlayerData(c,d);
+ c.onclick=e=>{if(e.target.closest("button"))return;e.stopPropagation();selectPlayer(c);fillForm(c)};
+ c.ondragstart=e=>{draggedPlayer=c;selectPlayer(c);e.dataTransfer.setData("text/plain",c.id)};
+ c.ondragend=()=>{draggedPlayer=null;document.querySelectorAll(".drop-hover").forEach(x=>x.classList.remove("drop-hover"))};
+ return c;
+}
+function addPlayer(){
+ const name=$("playerName").value.trim();if(!name)return alert("Oyuncu adı yaz.");
+ const c=makePlayerCard({name,pos:$("playerPosition").value,role:$("playerRole").value.trim(),tag:$("playerTag").value});
+ playersList.appendChild(c);$("playerName").value="";$("playerRole").value="";selectPlayer(c);saveState();refresh();
+}
+function fillForm(c){$("playerName").value=c.dataset.name;$("playerPosition").value=c.dataset.pos;$("playerRole").value=c.dataset.role||"";$("playerTag").value=c.dataset.tag||"Belirsiz"}
+function updateSelected(){if(!selectedPlayer)return alert("Önce oyuncu seç.");const name=$("playerName").value.trim();if(!name)return alert("İsim boş olamaz.");setPlayerData(selectedPlayer,{name,pos:$("playerPosition").value,role:$("playerRole").value.trim(),tag:$("playerTag").value});saveState();refresh();toast("Güncellendi")}
+function deleteCard(c){if(!c)return;if(!confirm(c.dataset.name+" silinsin mi?"))return;if(selectedPlayer===c)selectedPlayer=null;c.remove();saveState();refresh();updateStatus()}
+function selectPlayer(c){selectedPlayer=c;updateStatus()}
+function updateStatus(){getAllPlayers().forEach(p=>p.classList.remove("selected"));if(selectedPlayer&&document.body.contains(selectedPlayer)){selectedPlayer.classList.add("selected");selectedStatus.innerHTML=`Seçili oyuncu: <strong>${escapeHtml(selectedPlayer.dataset.name)}</strong>`}else{selectedPlayer=null;selectedStatus.innerHTML=`Seçili oyuncu: <strong>Yok</strong>`}}
+function movePlayerToZone(card,zone){if(!card||!zone)return;if(zone.classList.contains("slot")){const old=zone.querySelector(".player");if(old&&old!==card)playersList.appendChild(old)}zone.appendChild(card);selectPlayer(card);saveState();refresh()}
+function attachZoneEvents(z){
+ z.onclick=e=>{if(e.target.closest(".player"))return;if(selectedPlayer)movePlayerToZone(selectedPlayer,z)};
+ z.ondragover=e=>{e.preventDefault();z.classList.add("drop-hover")};
+ z.ondragleave=()=>z.classList.remove("drop-hover");
+ z.ondrop=e=>{e.preventDefault();e.stopPropagation();z.classList.remove("drop-hover");const id=e.dataTransfer.getData("text/plain");movePlayerToZone(document.getElementById(id)||draggedPlayer||selectedPlayer,z)};
+}
+function renderPitch(key,keep=true){
+ const old=keep?[...pitch.querySelectorAll(".player")]:[];old.forEach(p=>playersList.appendChild(p));
+ pitch.innerHTML='<div class="box-mark box-top"></div><div class="box-mark box-bottom"></div>';
+ formations[key].forEach(([pos,x,y])=>{const s=document.createElement("div");s.className="slot empty dropzone";s.dataset.box=pos;s.style.left=x+"%";s.style.top=y+"%";s.innerHTML=`<div class="slot-title">${pos}</div><div class="empty-text">Dokun</div>`;attachZoneEvents(s);pitch.appendChild(s)});
+ refresh();saveState();
+}
+function makeItem(type,d){
+ const el=document.createElement("div");el.className="item";el.dataset.name=d.name;el.dataset.pos=d.pos;el.dataset.note=d.note;el.dataset.type=type;
+ el.innerHTML=`<div><div class="name">${escapeHtml(d.name)}</div><div class="meta">${escapeHtml(d.pos)} • ${escapeHtml(d.note)}</div></div><button class="icon-btn">🗑️</button>`;
+ el.querySelector("button").onclick=()=>{el.remove();saveState();refresh()};return el;
+}
+function itemData(el){return {name:el.dataset.name,pos:el.dataset.pos,note:el.dataset.note}}
+function addTarget(){const name=$("targetName").value.trim();if(!name)return alert("Hedef adı yaz.");$("targets").appendChild(makeItem("target",{name,pos:$("targetPos").value.trim()||"?",note:$("targetNote").value.trim()||"Not yok"}));$("targetName").value="";$("targetPos").value="";$("targetNote").value="";saveState();refresh()}
+function addIncoming(){const name=$("incomingName").value.trim();if(!name)return alert("Gelecek oyuncu adı yaz.");$("incoming").appendChild(makeItem("incoming",{name,pos:$("incomingPos").value.trim()||"?",note:$("incomingNote").value.trim()||"Not yok"}));$("incomingName").value="";$("incomingPos").value="";$("incomingNote").value="";saveState();refresh()}
+function refresh(){
+ document.querySelectorAll(".slot").forEach(z=>{const has=!!z.querySelector(".player");z.classList.toggle("empty",!has);const e=z.querySelector(".empty-text");if(has&&e)e.remove();if(!has&&!e){const n=document.createElement("div");n.className="empty-text";n.textContent="Dokun";z.appendChild(n)}});
+ document.querySelectorAll(".decision").forEach(c=>c.querySelector(".count").textContent=c.querySelectorAll(".player").length);
+ $("totalPlayers").textContent=getAllPlayers().length;$("onPitch").textContent=document.querySelectorAll(".slot .player").length;$("poolCount").textContent=playersList.querySelectorAll(".player").length;
+ $("targetCount").textContent=document.querySelectorAll("#targets .item").length;$("incomingCount").textContent=document.querySelectorAll("#incoming .item").length;updateStatus();
+}
+function getState(){
+ const data={formation:$("formationSelect").value,areas:{},targets:[...document.querySelectorAll("#targets .item")].map(itemData),incoming:[...document.querySelectorAll("#incoming .item")].map(itemData)};
+ data.areas.pool=[...playersList.querySelectorAll(".player")].map(playerData);
+ document.querySelectorAll(".slot,.decision").forEach((z,i)=>{data.areas[(z.classList.contains("slot")?"slot":"decision")+"-"+i+"-"+z.dataset.box]=[...z.querySelectorAll(".player")].map(playerData)});
+ return data;
+}
+function clearAll(){playersList.innerHTML="";$("targets").innerHTML="";$("incoming").innerHTML="";document.querySelectorAll(".decision").forEach(x=>[...x.querySelectorAll(".player")].forEach(p=>p.remove()))}
+function applyState(data){
+ selectedPlayer=null;clearAll();$("formationSelect").value=data.formation||"4231";renderPitch(data.formation||"4231",false);
+ Object.entries(data.areas||{}).forEach(([key,arr])=>{let z=null;if(key==="pool")z=playersList;else{const parts=key.split("-"),idx=parseInt(parts[1]),type=parts[0];z=[...document.querySelectorAll(type==="slot"?".slot":".decision")][idx]}if(z)arr.forEach(d=>z.appendChild(makePlayerCard(d)))});
+ (data.targets||[]).forEach(d=>$("targets").appendChild(makeItem("target",d)));(data.incoming||[]).forEach(d=>$("incoming").appendChild(makeItem("incoming",d)));saveState();refresh();
+}
+function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(getState()))}
+function loadState(){const raw=localStorage.getItem(STORAGE_KEY);if(raw){try{applyState(JSON.parse(raw));return}catch(e){}}}
+function scenarios(){try{return JSON.parse(localStorage.getItem(SCENARIO_KEY)||"{}")}catch(e){return {}}}
+function saveScenarios(o){localStorage.setItem(SCENARIO_KEY,JSON.stringify(o));renderScenarioSelect()}
+function renderScenarioSelect(){const s=scenarios();$("scenarioSelect").innerHTML=Object.keys(s).map(k=>`<option value="${escapeHtml(k)}">${escapeHtml(k)}</option>`).join("")||'<option value="">Kayıt yok</option>'}
+document.querySelectorAll(".tab-btn").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab-btn,.tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");$(b.dataset.tab).classList.add("active")});
+$("addPlayerBtn").onclick=addPlayer;$("updatePlayerBtn").onclick=updateSelected;$("deletePlayerBtn").onclick=()=>selectedPlayer?deleteCard(selectedPlayer):alert("Önce oyuncu seç.");
+$("clearSelectionBtn").onclick=()=>{selectedPlayer=null;updateStatus()};$("resetBtn").onclick=()=>{if(confirm("Her şey sıfırlansın mı?")){localStorage.removeItem(STORAGE_KEY);location.reload()}};
+$("addTargetBtn").onclick=addTarget;$("addIncomingBtn").onclick=addIncoming;$("formationSelect").onchange=e=>renderPitch(e.target.value,true);
+$("playerName").onkeydown=e=>{if(e.key==="Enter")addPlayer()};
+$("exportBtn").onclick=()=>{$("importText").value=JSON.stringify(getState(),null,2);toast("JSON hazır")};
+$("importBtn").onclick=()=>{try{applyState(JSON.parse($("importText").value));toast("İçe aktarıldı")}catch(e){alert("JSON hatalı")}};
+$("saveScenarioBtn").onclick=()=>{const name=$("scenarioName").value.trim();if(!name)return alert("Senaryo adı yaz.");const s=scenarios();s[name]=getState();saveScenarios(s);toast("Senaryo kaydedildi")};
+$("loadScenarioBtn").onclick=()=>{const s=scenarios(),n=$("scenarioSelect").value;if(s[n])applyState(s[n])};
+$("deleteScenarioBtn").onclick=()=>{const s=scenarios(),n=$("scenarioSelect").value;if(n&&s[n]&&confirm(n+" silinsin mi?")){delete s[n];saveScenarios(s)}};
+document.querySelectorAll(".dropzone").forEach(attachZoneEvents);
+renderPitch("4231",false);loadState();renderScenarioSelect();refresh();
+</script>
+</body>
+</html>
