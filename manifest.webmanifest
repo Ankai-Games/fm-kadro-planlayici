@@ -1,7 +1,7 @@
 {
   "name": "FM Squad Planner",
   "short_name": "FM Planner",
-  "description": "Squad, tactics and transfer planning tool for Football Manager players.",
+  "description": "Squad, tactics and transfer planning tool.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#07111f",

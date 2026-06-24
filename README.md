@@ -1,3 +1,3 @@
-# FM Squad Planner v8.1
+# FM Squad Planner v8.2
 
-Türkçe dilde mevkiler ve roller Türkçe görünür. İngilizce dilde İngilizce görünür.
+Roller ve mevkiler Türkçe/İngilizce dile göre değişir.
