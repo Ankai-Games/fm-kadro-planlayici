@@ -1,3 +1,3 @@
-# FM Squad Planner v8.2
+# FM Squad Planner v8
 
-Roller ve mevkiler Türkçe/İngilizce dile göre değişir.
+Türkçe/İngilizce, FM mevkileri, FM rolleri, 20 diziliş, yeni kadro kutuları.
