@@ -1,0 +1,679 @@
+[
+  {
+    "name": "Arda Güler",
+    "club": "Real Madrid",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "AMC",
+      "AMR",
+      "MC"
+    ],
+    "role": "İleri Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Arda Turan",
+    "club": "Emekli",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "AML",
+      "AMC",
+      "AMR"
+    ],
+    "role": "İç Forvet",
+    "value": ""
+  },
+  {
+    "name": "Arda Kurtulan",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "AMR",
+      "AML"
+    ],
+    "role": "Kanat Oyuncusu",
+    "value": ""
+  },
+  {
+    "name": "Ferdi Kadıoğlu",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "DL",
+      "DR",
+      "WBL",
+      "WBR"
+    ],
+    "role": "Kanat Bek",
+    "value": ""
+  },
+  {
+    "name": "Kenan Yıldız",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "AML",
+      "AMC",
+      "ST"
+    ],
+    "role": "İç Forvet",
+    "value": ""
+  },
+  {
+    "name": "Hakan Çalhanoğlu",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "DM",
+      "MC"
+    ],
+    "role": "Regista",
+    "value": ""
+  },
+  {
+    "name": "Orkun Kökçü",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "MC",
+      "MCL",
+      "MCR"
+    ],
+    "role": "Derinde Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Kerem Aktürkoğlu",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "AML",
+      "AMR"
+    ],
+    "role": "Kanat Oyuncusu",
+    "value": ""
+  },
+  {
+    "name": "Barış Alper Yılmaz",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "AMR",
+      "AML",
+      "ST"
+    ],
+    "role": "Pres Forveti",
+    "value": ""
+  },
+  {
+    "name": "İsmail Yüksek",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "DM",
+      "MC"
+    ],
+    "role": "Top Kazanan Orta Saha",
+    "value": ""
+  },
+  {
+    "name": "Uğurcan Çakır",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "GK"
+    ],
+    "role": "Kaleci",
+    "value": ""
+  },
+  {
+    "name": "Mert Günok",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "GK"
+    ],
+    "role": "Kaleci",
+    "value": ""
+  },
+  {
+    "name": "Altay Bayındır",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "GK"
+    ],
+    "role": "Kaleci",
+    "value": ""
+  },
+  {
+    "name": "Merih Demiral",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "DC"
+    ],
+    "role": "Stoper",
+    "value": ""
+  },
+  {
+    "name": "Çağlar Söyüncü",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "DC"
+    ],
+    "role": "Stoper",
+    "value": ""
+  },
+  {
+    "name": "Ozan Kabak",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "DC"
+    ],
+    "role": "Oyun Kurucu Stoper",
+    "value": ""
+  },
+  {
+    "name": "Zeki Çelik",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "DR",
+      "WBR"
+    ],
+    "role": "Bek",
+    "value": ""
+  },
+  {
+    "name": "Cengiz Ünder",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "AMR",
+      "AML"
+    ],
+    "role": "Ters Kanat",
+    "value": ""
+  },
+  {
+    "name": "Yusuf Yazıcı",
+    "club": "",
+    "country": "Türkiye",
+    "age": "",
+    "positions": [
+      "AMC",
+      "MC"
+    ],
+    "role": "İleri Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "İlkay Gündoğan",
+    "club": "",
+    "country": "Almanya",
+    "age": "",
+    "positions": [
+      "MC",
+      "AMC"
+    ],
+    "role": "İleri Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Mesut Özil",
+    "club": "Emekli",
+    "country": "Almanya",
+    "age": "",
+    "positions": [
+      "AMC",
+      "AMR"
+    ],
+    "role": "İleri Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Cristiano Ronaldo",
+    "club": "",
+    "country": "Portekiz",
+    "age": "",
+    "positions": [
+      "ST",
+      "AML"
+    ],
+    "role": "İleri Uç Forvet",
+    "value": ""
+  },
+  {
+    "name": "Lionel Messi",
+    "club": "",
+    "country": "Arjantin",
+    "age": "",
+    "positions": [
+      "AMR",
+      "AMC",
+      "ST"
+    ],
+    "role": "Trequartista",
+    "value": ""
+  },
+  {
+    "name": "Neymar",
+    "club": "",
+    "country": "Brezilya",
+    "age": "",
+    "positions": [
+      "AML",
+      "AMC"
+    ],
+    "role": "Trequartista",
+    "value": ""
+  },
+  {
+    "name": "Kylian Mbappe",
+    "club": "",
+    "country": "Fransa",
+    "age": "",
+    "positions": [
+      "ST",
+      "AML"
+    ],
+    "role": "İleri Uç Forvet",
+    "value": ""
+  },
+  {
+    "name": "Erling Haaland",
+    "club": "",
+    "country": "Norveç",
+    "age": "",
+    "positions": [
+      "ST"
+    ],
+    "role": "İleri Uç Forvet",
+    "value": ""
+  },
+  {
+    "name": "Jude Bellingham",
+    "club": "",
+    "country": "İngiltere",
+    "age": "",
+    "positions": [
+      "AMC",
+      "MC"
+    ],
+    "role": "Mezzala",
+    "value": ""
+  },
+  {
+    "name": "Vinicius Junior",
+    "club": "",
+    "country": "Brezilya",
+    "age": "",
+    "positions": [
+      "AML"
+    ],
+    "role": "İç Forvet",
+    "value": ""
+  },
+  {
+    "name": "Rodrygo",
+    "club": "",
+    "country": "Brezilya",
+    "age": "",
+    "positions": [
+      "AMR",
+      "AML",
+      "ST"
+    ],
+    "role": "Ters Kanat",
+    "value": ""
+  },
+  {
+    "name": "Lamine Yamal",
+    "club": "",
+    "country": "İspanya",
+    "age": "",
+    "positions": [
+      "AMR"
+    ],
+    "role": "Ters Kanat",
+    "value": ""
+  },
+  {
+    "name": "Pedri",
+    "club": "",
+    "country": "İspanya",
+    "age": "",
+    "positions": [
+      "MC",
+      "AMC"
+    ],
+    "role": "İleri Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Gavi",
+    "club": "",
+    "country": "İspanya",
+    "age": "",
+    "positions": [
+      "MC",
+      "MCL"
+    ],
+    "role": "Mezzala",
+    "value": ""
+  },
+  {
+    "name": "Frenkie de Jong",
+    "club": "",
+    "country": "Hollanda",
+    "age": "",
+    "positions": [
+      "MC",
+      "DM"
+    ],
+    "role": "Derinde Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Robert Lewandowski",
+    "club": "",
+    "country": "Polonya",
+    "age": "",
+    "positions": [
+      "ST"
+    ],
+    "role": "Komple Forvet",
+    "value": ""
+  },
+  {
+    "name": "Harry Kane",
+    "club": "",
+    "country": "İngiltere",
+    "age": "",
+    "positions": [
+      "ST"
+    ],
+    "role": "Komple Forvet",
+    "value": ""
+  },
+  {
+    "name": "Bukayo Saka",
+    "club": "",
+    "country": "İngiltere",
+    "age": "",
+    "positions": [
+      "AMR",
+      "MR"
+    ],
+    "role": "Ters Kanat",
+    "value": ""
+  },
+  {
+    "name": "Martin Odegaard",
+    "club": "",
+    "country": "Norveç",
+    "age": "",
+    "positions": [
+      "AMC",
+      "MC"
+    ],
+    "role": "İleri Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Declan Rice",
+    "club": "",
+    "country": "İngiltere",
+    "age": "",
+    "positions": [
+      "DM",
+      "MC"
+    ],
+    "role": "Defansif Orta Saha",
+    "value": ""
+  },
+  {
+    "name": "Phil Foden",
+    "club": "",
+    "country": "İngiltere",
+    "age": "",
+    "positions": [
+      "AMC",
+      "AMR",
+      "AML"
+    ],
+    "role": "İleri Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Kevin De Bruyne",
+    "club": "",
+    "country": "Belçika",
+    "age": "",
+    "positions": [
+      "MC",
+      "AMC"
+    ],
+    "role": "İleri Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Rodri",
+    "club": "",
+    "country": "İspanya",
+    "age": "",
+    "positions": [
+      "DM",
+      "MC"
+    ],
+    "role": "Derinde Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Mohamed Salah",
+    "club": "",
+    "country": "Mısır",
+    "age": "",
+    "positions": [
+      "AMR"
+    ],
+    "role": "İç Forvet",
+    "value": ""
+  },
+  {
+    "name": "Virgil van Dijk",
+    "club": "",
+    "country": "Hollanda",
+    "age": "",
+    "positions": [
+      "DC"
+    ],
+    "role": "Oyun Kurucu Stoper",
+    "value": ""
+  },
+  {
+    "name": "Alisson",
+    "club": "",
+    "country": "Brezilya",
+    "age": "",
+    "positions": [
+      "GK",
+      "SK"
+    ],
+    "role": "Süpürücü Kaleci",
+    "value": ""
+  },
+  {
+    "name": "Trent Alexander-Arnold",
+    "club": "",
+    "country": "İngiltere",
+    "age": "",
+    "positions": [
+      "DR",
+      "DM",
+      "MC"
+    ],
+    "role": "Ters Kanat Bek",
+    "value": ""
+  },
+  {
+    "name": "Jamal Musiala",
+    "club": "",
+    "country": "Almanya",
+    "age": "",
+    "positions": [
+      "AMC",
+      "AML"
+    ],
+    "role": "Trequartista",
+    "value": ""
+  },
+  {
+    "name": "Florian Wirtz",
+    "club": "",
+    "country": "Almanya",
+    "age": "",
+    "positions": [
+      "AMC",
+      "AML"
+    ],
+    "role": "İleri Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Joshua Kimmich",
+    "club": "",
+    "country": "Almanya",
+    "age": "",
+    "positions": [
+      "DM",
+      "MC",
+      "DR"
+    ],
+    "role": "Derinde Oyun Kurucu",
+    "value": ""
+  },
+  {
+    "name": "Lautaro Martinez",
+    "club": "",
+    "country": "Arjantin",
+    "age": "",
+    "positions": [
+      "ST"
+    ],
+    "role": "Pres Forveti",
+    "value": ""
+  },
+  {
+    "name": "Nicolo Barella",
+    "club": "",
+    "country": "İtalya",
+    "age": "",
+    "positions": [
+      "MC",
+      "MCR"
+    ],
+    "role": "Mezzala",
+    "value": ""
+  },
+  {
+    "name": "Gianluigi Donnarumma",
+    "club": "",
+    "country": "İtalya",
+    "age": "",
+    "positions": [
+      "GK"
+    ],
+    "role": "Kaleci",
+    "value": ""
+  },
+  {
+    "name": "Achraf Hakimi",
+    "club": "",
+    "country": "Fas",
+    "age": "",
+    "positions": [
+      "DR",
+      "WBR"
+    ],
+    "role": "Kanat Bek",
+    "value": ""
+  },
+  {
+    "name": "Victor Osimhen",
+    "club": "",
+    "country": "Nijerya",
+    "age": "",
+    "positions": [
+      "ST"
+    ],
+    "role": "İleri Uç Forvet",
+    "value": ""
+  },
+  {
+    "name": "Khvicha Kvaratskhelia",
+    "club": "",
+    "country": "Gürcistan",
+    "age": "",
+    "positions": [
+      "AML"
+    ],
+    "role": "Ters Kanat",
+    "value": ""
+  },
+  {
+    "name": "Rafael Leao",
+    "club": "",
+    "country": "Portekiz",
+    "age": "",
+    "positions": [
+      "AML"
+    ],
+    "role": "İç Forvet",
+    "value": ""
+  },
+  {
+    "name": "Theo Hernandez",
+    "club": "",
+    "country": "Fransa",
+    "age": "",
+    "positions": [
+      "DL",
+      "WBL"
+    ],
+    "role": "Kanat Bek",
+    "value": ""
+  },
+  {
+    "name": "Mike Maignan",
+    "club": "",
+    "country": "Fransa",
+    "age": "",
+    "positions": [
+      "GK"
+    ],
+    "role": "Süpürücü Kaleci",
+    "value": ""
+  }
+]

@@ -1,3 +1,3 @@
-# FM Squad Planner v8
+FM Squad Planner Data Paketi v1
 
-Türkçe/İngilizce, FM mevkileri, FM rolleri, 20 diziliş, yeni kadro kutuları.
+GitHub'a players.json dosyasını yükle.
