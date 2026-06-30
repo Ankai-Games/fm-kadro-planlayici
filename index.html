@@ -27,13 +27,13 @@ button{background:linear-gradient(135deg,#2563eb,#7c3aed);font-weight:800;border
 .slot{position:absolute;width:105px;min-height:55px;transform:translate(-50%,-50%);padding:6px;text-align:center;background:rgba(2,6,23,.65);border:1px dashed white;border-radius:12px;cursor:pointer;z-index:2}
 .slot-title{font-size:12px;font-weight:900}.empty-text{font-size:11px;color:#dbeafe;margin-top:4px}.slot .player{display:block;padding:5px;margin:4px 0 0;font-size:11px}.slot .actions,.slot .badge{display:none}.slot .meta{font-size:10px}
 .board{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.box{min-height:190px;background:#0f172a;border:1px solid #2b3b58;border-radius:14px;padding:10px;cursor:pointer}
-.small{font-size:12px;color:#94a3b8}.ok{color:#86efac}.bad{color:#fca5a5}
+.small{font-size:12px;color:#94a3b8}.ok{color:#86efac}.bad{color:#fca5a5}.muted{color:#94a3b8}
 @media(max-width:1050px){.layout{grid-template-columns:1fr}.board{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){header{display:block}.status{margin-top:8px;display:inline-block}.layout{padding:8px}.tabs{grid-template-columns:repeat(2,1fr)}.board{grid-template-columns:1fr}.pitch{height:520px}.slot{width:78px}}
 </style>
 </head>
 <body>
 <header>
-  <div><h1>FM Squad Planner</h1><div class="sub">Database bağlı sürüm</div></div>
+  <div><h1>FM Squad Planner</h1><div class="sub">20K database final revize</div></div>
   <div id="status" class="status">Seçili: <b>Yok</b></div>
 </header>
 <div class="layout">
@@ -51,8 +51,8 @@ button{background:linear-gradient(135deg,#2563eb,#7c3aed);font-weight:800;border
     <h2>Oyuncu Veritabanından Ekle</h2>
     <div id="dbStatus" class="small">Database yükleniyor...</div>
     <label>Oyuncu ara</label>
-    <input id="q" placeholder="ard, ferdi, haaland...">
-    <div id="results"></div>
+    <input id="q" placeholder="En az 2 harf yaz: ard, fer, messi...">
+    <div id="results"><p class="small muted">Aramaya başlamak için en az 2 harf yaz.</p></div>
   </div>
   <div class="panel">
     <h2>Oyuncu Havuzu <span id="poolCount">0</span></h2>
@@ -114,14 +114,13 @@ button{background:linear-gradient(135deg,#2563eb,#7c3aed);font-weight:800;border
 
 <script>
 let DB = [];
-let DB_READY = false;
 let selected = null;
 const $ = id => document.getElementById(id);
 
 const positions = ["GK","SK","DL","DCL","DC","DCR","DR","WBL","WBR","DM","MCL","MC","MCR","ML","MR","AML","AMC","AMR","STL","ST","STR"];
 const roles = ["Kaleci","Süpürücü Kaleci","Bek","Kanat Bek","Ters Kanat Bek","Stoper","Oyun Kurucu Stoper","Sert Stoper","Libero","Defansif Orta Saha","Çapa","Regista","Derinde Oyun Kurucu","Top Kazanan Orta Saha","Merkez Orta Saha","İki Yönlü Orta Saha","Mezzala","İleri Oyun Kurucu","Kanat Oyuncusu","İç Forvet","Ters Kanat","Trequartista","İleri Uç Forvet","Pres Forveti","Hedef Santrfor","Komple Forvet","Sahte Dokuz","Golcü Forvet"];
 const formations = {
-"4-2-3-1":[["ST",50,10],["AML",26,29],["AMC",50,29],["AMR",74,29],["MCL",40,52],["MCR",60,52],["DL",18,75],["DCL",40,75],["DCR",60,75],["DR",82,75],["GK",50,92]],
+"4-2-3-1 Wide":[["ST",50,10],["AML",26,29],["AMC",50,29],["AMR",74,29],["MCL",40,52],["MCR",60,52],["DL",18,75],["DCL",40,75],["DCR",60,75],["DR",82,75],["GK",50,92]],
 "4-3-3 DM":[["ST",50,10],["AML",27,28],["AMR",73,28],["MCL",38,51],["MCR",62,51],["DM",50,61],["DL",18,76],["DCL",40,76],["DCR",60,76],["DR",82,76],["GK",50,92]],
 "4-4-2":[["STL",42,12],["STR",58,12],["ML",26,42],["MCL",42,53],["MCR",58,53],["MR",74,42],["DL",18,75],["DCL",40,75],["DCR",60,75],["DR",82,75],["GK",50,92]],
 "3-5-2":[["STL",42,12],["STR",58,12],["ML",23,48],["MCL",38,52],["MC",50,56],["MCR",62,52],["MR",77,48],["DCL",34,77],["DC",50,79],["DCR",66,77],["GK",50,92]],
@@ -170,11 +169,21 @@ function select(el){
 }
 
 function renderSearch(){
-  const q = norm($("q").value);
-  let list = [];
-  if(q) list = DB.filter(p => p._s.includes(q)).slice(0, 50);
-  else list = DB.slice(0, 20);
-  results.innerHTML = list.map((p,i)=>`<div class="card"><div><div class="name">${esc(p.name)}</div><div class="meta">${esc([p.club,p.country,(p.positions||[]).join(", ")].filter(Boolean).join(" • "))}</div></div><button onclick="addDB(${DB.indexOf(p)})">Ekle</button></div>`).join("") || "<p class='small'>Sonuç yok.</p>";
+  const queryRaw = $("q").value.trim();
+  const q = norm(queryRaw);
+  if(q.length < 2){
+    results.innerHTML = `<p class="small muted">Aramaya başlamak için en az 2 harf yaz.</p>`;
+    return;
+  }
+  const starts = [];
+  const contains = [];
+  for(const p of DB){
+    if(p._name.startsWith(q)) starts.push(p);
+    else if(p._s.includes(q)) contains.push(p);
+    if(starts.length >= 40 && contains.length >= 20) break;
+  }
+  const list = starts.concat(contains).slice(0, 60);
+  results.innerHTML = list.map((p,i)=>`<div class="card"><div><div class="name">${esc(p.name)}</div><div class="meta">${esc([p.club,p.country,(p.positions||[]).join(", ")].filter(Boolean).join(" • "))}</div></div><button onclick="addDB(${DB.indexOf(p)})">Ekle</button></div>`).join("") || `<p class="small">Sonuç yok.</p>`;
 }
 
 function addDB(i){ pool.appendChild(makeCard(DB[i])); refresh(); }
@@ -225,26 +234,28 @@ addTarget.onclick = () => addItem(targets,tname.value,tpos.value,tnote.value);
 addIncoming.onclick = () => addItem(incoming,iname.value,ipos.value,inote.value);
 
 function state(){ return {pool:[...pool.querySelectorAll(".player")].map(cardData)}; }
-function save(){ localStorage.setItem("fmsp_db_v1", JSON.stringify(state())); }
-function load(){ try{ const s=JSON.parse(localStorage.getItem("fmsp_db_v1")||"{}"); (s.pool||[]).forEach(p=>pool.appendChild(makeCard(p))); }catch(e){} }
+function save(){ localStorage.setItem("fmsp_db_20k_final", JSON.stringify(state())); }
+function load(){ try{ const s=JSON.parse(localStorage.getItem("fmsp_db_20k_final")||"{}"); (s.pool||[]).forEach(p=>pool.appendChild(makeCard(p))); }catch(e){} }
 function refresh(){ poolCount.textContent=pool.querySelectorAll(".player").length; save(); }
 export.onclick = () => jsonbox.value = JSON.stringify(state(),null,2);
 import.onclick = () => { try{ const s=JSON.parse(jsonbox.value); pool.innerHTML=""; (s.pool||[]).forEach(p=>pool.appendChild(makeCard(p))); refresh(); }catch(e){ alert("JSON hatalı"); } };
-reset.onclick = () => { localStorage.removeItem("fmsp_db_v1"); location.reload(); };
+reset.onclick = () => { localStorage.removeItem("fmsp_db_20k_final"); location.reload(); };
 
 async function loadDatabase(){
   try{
-    const res = await fetch("./players.json?build=20260630", {cache:"no-store"});
+    const res = await fetch("./players.json?build=20k-final", {cache:"no-store"});
     if(!res.ok) throw new Error("players.json okunamadı");
     DB = await res.json();
-    DB.forEach(p => p._s = norm([p.name,p.club,p.country,(p.positions||[]).join(" ")].join(" ")));
-    DB_READY = true;
-    dbStatus.innerHTML = `<span class="ok">${DB.length.toLocaleString("tr-TR")} oyuncu yüklendi.</span>`;
+    DB.forEach(p => {
+      p._name = norm(p.name);
+      p._s = norm([p.name,p.club,p.country,(p.positions||[]).join(" ")].join(" "));
+    });
+    dbStatus.innerHTML = `<span class="ok">${DB.length.toLocaleString("tr-TR")} oyuncu yüklendi. Aramak için en az 2 harf yaz.</span>`;
   }catch(e){
     DB = [
-      {name:"Arda Güler",country:"Türkiye",club:"Real Madrid",positions:["AMC","AMR"],_s:"arda guler real madrid turkiye"},
-      {name:"Arda Turan",country:"Türkiye",club:"Emekli",positions:["AML","AMC"],_s:"arda turan turkiye"},
-      {name:"Ferdi Kadıoğlu",country:"Türkiye",club:"",positions:["DL","DR"],_s:"ferdi kadioglu turkiye"}
+      {name:"Arda Güler",country:"Türkiye",club:"Real Madrid",positions:["AMC","AMR"],_name:"arda guler",_s:"arda guler real madrid turkiye"},
+      {name:"Arda Turan",country:"Türkiye",club:"Emekli",positions:["AML","AMC"],_name:"arda turan",_s:"arda turan turkiye"},
+      {name:"Ferdi Kadıoğlu",country:"Türkiye",club:"",positions:["DL","DR"],_name:"ferdi kadioglu",_s:"ferdi kadioglu turkiye"}
     ];
     dbStatus.innerHTML = `<span class="bad">players.json okunamadı; küçük yedek data kullanılıyor.</span>`;
   }
