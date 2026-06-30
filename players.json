@@ -9,7 +9,7 @@
       "AMR",
       "MC"
     ],
-    "role": "İleri Oyun Kurucu",
+    "role": "Advanced Playmaker",
     "value": ""
   },
   {
@@ -22,7 +22,7 @@
       "AMC",
       "AMR"
     ],
-    "role": "İç Forvet",
+    "role": "Inside Forward",
     "value": ""
   },
   {
@@ -34,7 +34,7 @@
       "AMR",
       "AML"
     ],
-    "role": "Kanat Oyuncusu",
+    "role": "Winger",
     "value": ""
   },
   {
@@ -48,7 +48,7 @@
       "WBL",
       "WBR"
     ],
-    "role": "Kanat Bek",
+    "role": "Wing Back",
     "value": ""
   },
   {
@@ -61,7 +61,7 @@
       "AMC",
       "ST"
     ],
-    "role": "İç Forvet",
+    "role": "Inside Forward",
     "value": ""
   },
   {
@@ -86,7 +86,7 @@
       "MCL",
       "MCR"
     ],
-    "role": "Derinde Oyun Kurucu",
+    "role": "Deep Lying Playmaker",
     "value": ""
   },
   {
@@ -98,7 +98,7 @@
       "AML",
       "AMR"
     ],
-    "role": "Kanat Oyuncusu",
+    "role": "Winger",
     "value": ""
   },
   {
@@ -111,7 +111,7 @@
       "AML",
       "ST"
     ],
-    "role": "Pres Forveti",
+    "role": "Pressing Forward",
     "value": ""
   },
   {
@@ -123,7 +123,7 @@
       "DM",
       "MC"
     ],
-    "role": "Top Kazanan Orta Saha",
+    "role": "Ball Winning Midfielder",
     "value": ""
   },
   {
@@ -134,7 +134,7 @@
     "positions": [
       "GK"
     ],
-    "role": "Kaleci",
+    "role": "Goalkeeper",
     "value": ""
   },
   {
@@ -145,7 +145,7 @@
     "positions": [
       "GK"
     ],
-    "role": "Kaleci",
+    "role": "Goalkeeper",
     "value": ""
   },
   {
@@ -156,7 +156,7 @@
     "positions": [
       "GK"
     ],
-    "role": "Kaleci",
+    "role": "Goalkeeper",
     "value": ""
   },
   {
@@ -167,7 +167,7 @@
     "positions": [
       "DC"
     ],
-    "role": "Stoper",
+    "role": "Centre Back",
     "value": ""
   },
   {
@@ -178,7 +178,7 @@
     "positions": [
       "DC"
     ],
-    "role": "Stoper",
+    "role": "Centre Back",
     "value": ""
   },
   {
@@ -189,7 +189,7 @@
     "positions": [
       "DC"
     ],
-    "role": "Oyun Kurucu Stoper",
+    "role": "Ball Playing Defender",
     "value": ""
   },
   {
@@ -201,7 +201,7 @@
       "DR",
       "WBR"
     ],
-    "role": "Bek",
+    "role": "Full Back",
     "value": ""
   },
   {
@@ -213,7 +213,7 @@
       "AMR",
       "AML"
     ],
-    "role": "Ters Kanat",
+    "role": "Inverted Winger",
     "value": ""
   },
   {
@@ -225,7 +225,7 @@
       "AMC",
       "MC"
     ],
-    "role": "İleri Oyun Kurucu",
+    "role": "Advanced Playmaker",
     "value": ""
   },
   {
@@ -237,7 +237,7 @@
       "MC",
       "AMC"
     ],
-    "role": "İleri Oyun Kurucu",
+    "role": "Advanced Playmaker",
     "value": ""
   },
   {
@@ -249,7 +249,7 @@
       "AMC",
       "AMR"
     ],
-    "role": "İleri Oyun Kurucu",
+    "role": "Advanced Playmaker",
     "value": ""
   },
   {
@@ -261,7 +261,7 @@
       "ST",
       "AML"
     ],
-    "role": "İleri Uç Forvet",
+    "role": "Advanced Forward",
     "value": ""
   },
   {
@@ -298,7 +298,7 @@
       "ST",
       "AML"
     ],
-    "role": "İleri Uç Forvet",
+    "role": "Advanced Forward",
     "value": ""
   },
   {
@@ -309,7 +309,7 @@
     "positions": [
       "ST"
     ],
-    "role": "İleri Uç Forvet",
+    "role": "Advanced Forward",
     "value": ""
   },
   {
@@ -332,7 +332,7 @@
     "positions": [
       "AML"
     ],
-    "role": "İç Forvet",
+    "role": "Inside Forward",
     "value": ""
   },
   {
@@ -345,7 +345,7 @@
       "AML",
       "ST"
     ],
-    "role": "Ters Kanat",
+    "role": "Inverted Winger",
     "value": ""
   },
   {
@@ -356,7 +356,7 @@
     "positions": [
       "AMR"
     ],
-    "role": "Ters Kanat",
+    "role": "Inverted Winger",
     "value": ""
   },
   {
@@ -368,7 +368,7 @@
       "MC",
       "AMC"
     ],
-    "role": "İleri Oyun Kurucu",
+    "role": "Advanced Playmaker",
     "value": ""
   },
   {
@@ -392,7 +392,7 @@
       "MC",
       "DM"
     ],
-    "role": "Derinde Oyun Kurucu",
+    "role": "Deep Lying Playmaker",
     "value": ""
   },
   {
@@ -403,7 +403,7 @@
     "positions": [
       "ST"
     ],
-    "role": "Komple Forvet",
+    "role": "Complete Forward",
     "value": ""
   },
   {
@@ -414,7 +414,7 @@
     "positions": [
       "ST"
     ],
-    "role": "Komple Forvet",
+    "role": "Complete Forward",
     "value": ""
   },
   {
@@ -426,7 +426,7 @@
       "AMR",
       "MR"
     ],
-    "role": "Ters Kanat",
+    "role": "Inverted Winger",
     "value": ""
   },
   {
@@ -438,7 +438,7 @@
       "AMC",
       "MC"
     ],
-    "role": "İleri Oyun Kurucu",
+    "role": "Advanced Playmaker",
     "value": ""
   },
   {
@@ -450,7 +450,7 @@
       "DM",
       "MC"
     ],
-    "role": "Defansif Orta Saha",
+    "role": "Defensive Midfielder",
     "value": ""
   },
   {
@@ -463,7 +463,7 @@
       "AMR",
       "AML"
     ],
-    "role": "İleri Oyun Kurucu",
+    "role": "Advanced Playmaker",
     "value": ""
   },
   {
@@ -475,7 +475,7 @@
       "MC",
       "AMC"
     ],
-    "role": "İleri Oyun Kurucu",
+    "role": "Advanced Playmaker",
     "value": ""
   },
   {
@@ -487,7 +487,7 @@
       "DM",
       "MC"
     ],
-    "role": "Derinde Oyun Kurucu",
+    "role": "Deep Lying Playmaker",
     "value": ""
   },
   {
@@ -498,7 +498,7 @@
     "positions": [
       "AMR"
     ],
-    "role": "İç Forvet",
+    "role": "Inside Forward",
     "value": ""
   },
   {
@@ -509,7 +509,7 @@
     "positions": [
       "DC"
     ],
-    "role": "Oyun Kurucu Stoper",
+    "role": "Ball Playing Defender",
     "value": ""
   },
   {
@@ -521,7 +521,7 @@
       "GK",
       "SK"
     ],
-    "role": "Süpürücü Kaleci",
+    "role": "Sweeper Keeper",
     "value": ""
   },
   {
@@ -534,146 +534,7 @@
       "DM",
       "MC"
     ],
-    "role": "Ters Kanat Bek",
-    "value": ""
-  },
-  {
-    "name": "Jamal Musiala",
-    "club": "",
-    "country": "Almanya",
-    "age": "",
-    "positions": [
-      "AMC",
-      "AML"
-    ],
-    "role": "Trequartista",
-    "value": ""
-  },
-  {
-    "name": "Florian Wirtz",
-    "club": "",
-    "country": "Almanya",
-    "age": "",
-    "positions": [
-      "AMC",
-      "AML"
-    ],
-    "role": "İleri Oyun Kurucu",
-    "value": ""
-  },
-  {
-    "name": "Joshua Kimmich",
-    "club": "",
-    "country": "Almanya",
-    "age": "",
-    "positions": [
-      "DM",
-      "MC",
-      "DR"
-    ],
-    "role": "Derinde Oyun Kurucu",
-    "value": ""
-  },
-  {
-    "name": "Lautaro Martinez",
-    "club": "",
-    "country": "Arjantin",
-    "age": "",
-    "positions": [
-      "ST"
-    ],
-    "role": "Pres Forveti",
-    "value": ""
-  },
-  {
-    "name": "Nicolo Barella",
-    "club": "",
-    "country": "İtalya",
-    "age": "",
-    "positions": [
-      "MC",
-      "MCR"
-    ],
-    "role": "Mezzala",
-    "value": ""
-  },
-  {
-    "name": "Gianluigi Donnarumma",
-    "club": "",
-    "country": "İtalya",
-    "age": "",
-    "positions": [
-      "GK"
-    ],
-    "role": "Kaleci",
-    "value": ""
-  },
-  {
-    "name": "Achraf Hakimi",
-    "club": "",
-    "country": "Fas",
-    "age": "",
-    "positions": [
-      "DR",
-      "WBR"
-    ],
-    "role": "Kanat Bek",
-    "value": ""
-  },
-  {
-    "name": "Victor Osimhen",
-    "club": "",
-    "country": "Nijerya",
-    "age": "",
-    "positions": [
-      "ST"
-    ],
-    "role": "İleri Uç Forvet",
-    "value": ""
-  },
-  {
-    "name": "Khvicha Kvaratskhelia",
-    "club": "",
-    "country": "Gürcistan",
-    "age": "",
-    "positions": [
-      "AML"
-    ],
-    "role": "Ters Kanat",
-    "value": ""
-  },
-  {
-    "name": "Rafael Leao",
-    "club": "",
-    "country": "Portekiz",
-    "age": "",
-    "positions": [
-      "AML"
-    ],
-    "role": "İç Forvet",
-    "value": ""
-  },
-  {
-    "name": "Theo Hernandez",
-    "club": "",
-    "country": "Fransa",
-    "age": "",
-    "positions": [
-      "DL",
-      "WBL"
-    ],
-    "role": "Kanat Bek",
-    "value": ""
-  },
-  {
-    "name": "Mike Maignan",
-    "club": "",
-    "country": "Fransa",
-    "age": "",
-    "positions": [
-      "GK"
-    ],
-    "role": "Süpürücü Kaleci",
+    "role": "Inverted Wing Back",
     "value": ""
   }
 ]

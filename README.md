@@ -1,3 +1,3 @@
-FM Squad Planner Data Paketi v1
+FM Squad Planner v8 + Oyuncu Data Arama
 
-GitHub'a players.json dosyasını yükle.
+GitHub’a tüm dosyaları yükle: index.html, players.json, service-worker.js, manifest ve icons.
