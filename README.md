@@ -1,3 +1,1 @@
-20K final revize.
-Oyuncu sayısı: 20000
-Arama boşken sonuç göstermez.
+Fix final. Oyuncu sayısı: 20000
